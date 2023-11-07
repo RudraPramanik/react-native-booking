@@ -2,27 +2,29 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import HamburgerMenu from './src/component/home/Humburger';
 import SearchInput from './src/component/home/SearchInput';
-import Select from './src/component/home/Dropdown';
 import React, { useState } from 'react';
+import Select, { Option } from './src/component/home/Dropdown';
+import DocList from './src/component/DocList';
+import HorizontalCardList from './src/component/home/HorizontalCardList';
 
-const options = [
-  { label: 'Option 1', value: 'option1' },
-  { label: 'Option 2', value: 'option2' },
-  { label: 'Option 3', value: 'option3' },
-  { label: 'Option 4', value: 'option4' },
-  { label: 'Option 5', value: 'option5' },
+const options: Option[] = [
+  { label: 'Option A', value: 'option A' },
+  { label: 'Option B', value: 'option B' },
+  { label: 'Option C', value: 'option C' },
+  { label: 'Option D', value: 'option D' },
+  { label: 'Option E', value: 'option E' },
 ];
 export default function App() {
-  const [selectedValue, setSelectedValue] = useState('Select an option');
+  const [selectedValue, setSelectedValue] = useState<string>('options');
 
-  const handleSelect = (value) => {
+  const handleSelect = (value: string) => {
     setSelectedValue(value);
   };
   return (
     <View style={styles.container}>
       <StatusBar
         style="light" // Set the text color (dark/light)
-        backgroundColor="rgba(0, 0, 0, 0.8)" // Set the background color
+        backgroundColor="#32075e" // Set the background color
         translucent={true} // Make it translucent
       />
       {/*  */}
@@ -45,7 +47,7 @@ export default function App() {
       </View> */}
       {/*  */}
       <View style={styles.content}>
-        <View style={styles.contentText}>
+        <View style={styles.contentTop}>
           <Text style={styles.contentText}>Top Doctor</Text>
           <View>
             <Select
@@ -55,8 +57,18 @@ export default function App() {
             />
           </View>
         </View>
-        <Text style={styles.contentText}>Welcome to my app!</Text>
+        {/*  */}
+        <View>
+          <DocList />
+        </View>
+        {/*  */}
+        {/* bottom */}
+        <View>
+          <HorizontalCardList />
+        </View>
+        {/* bottom */}
       </View>
+
       <View style={styles.footer}>
         <Text style={styles.footerText}>Copyright © 2023</Text>
       </View>
@@ -67,12 +79,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#32075e',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(0, 0, 0, 1)',
+    backgroundColor: '#32075e',
     paddingTop: 70,
     paddingLeft: 15,
   },
@@ -83,16 +95,23 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     // justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    // alignItems: 'center',
+    backgroundColor: '#32075e',
   },
-  contentTop: { color: 'white' },
+  contentTop: {
+    color: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 18,
+    marginTop: 6,
+  },
   contentText: {
     fontSize: 18,
-    color: 'white',
+    color: '#d2beeb',
+    fontWeight: '700',
   },
   footer: {
-    backgroundColor: 'gray',
+    backgroundColor: '#32075e',
     padding: 10,
     alignItems: 'center',
   },
@@ -100,8 +119,8 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   image: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     borderRadius: 100,
     marginRight: 10,
   },

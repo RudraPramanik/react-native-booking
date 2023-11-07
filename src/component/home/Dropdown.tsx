@@ -1,71 +1,101 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 
-const Select: REACT.FC = ({ options, selectedValue, onSelect }) => {
+export interface Option {
+  label: string;
+  value: string;
+}
+
+export interface selectProps {
+  options: Option[];
+  selectedValue: string;
+  onSelect: (value: string) => void;
+}
+const Select: React.FC<selectProps> = ({
+  options,
+  selectedValue,
+  onSelect,
+}) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleSelect = (value: string) => {
+    onSelect(value);
+    setIsDropdownOpen(false);
+  };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => setModalVisible(true)}
-        style={styles.selectButton}
-      >
+      <TouchableOpacity onPress={toggleDropdown} style={styles.selectButton}>
         <Text style={styles.selectedValueText}>{selectedValue}</Text>
       </TouchableOpacity>
 
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
+      {isDropdownOpen && (
+        <View style={styles.dropdownContainer}>
           {options.map((option) => (
             <TouchableOpacity
               key={option.value}
-              onPress={() => {
-                onSelect(option.value);
-                setModalVisible(false);
-              }}
+              onPress={() => handleSelect(option.value)}
               style={styles.optionItem}
             >
               <Text style={styles.optionText}>{option.label}</Text>
             </TouchableOpacity>
           ))}
         </View>
-      </Modal>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 0,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   selectButton: {
-    padding: 10,
-    backgroundColor: 'lightgray',
     borderRadius: 5,
+    backgroundColor: '#221136',
+    borderWidth: 1,
+    borderColor: '#4d3c5e',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   selectedValueText: {
     fontSize: 16,
+    color: '#d2beeb',
   },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
+
   optionItem: {
     padding: 10,
     borderBottomWidth: 1,
-    borderColor: 'lightgray',
+    borderColor: '#d2beeb',
+    zIndex: 2,
   },
   optionText: {
-    fontSize: 16,
-    color: 'white',
+    fontSize: 14,
+    color: '#d2beeb',
+  },
+  dropdownContainer: {
+    position: 'absolute',
+    top: 40, // Adjust the top value to align the dropdown below the button
+    zIndex: 3, // Ensure the dropdown is rendered above other components    //
+    padding: 0,
+    borderRadius: 2,
+    backgroundColor: '#32075e',
+    borderWidth: 1,
+    borderColor: '#4d3c5e',
   },
 });
 

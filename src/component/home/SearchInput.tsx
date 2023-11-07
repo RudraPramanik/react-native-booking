@@ -16,12 +16,12 @@ const SearchInput: React.FC = () => {
           name="search"
           style={styles.icon}
           size={24}
-          color="white"
+          color="#d2beeb"
         />
         <TextInput
           style={styles.input}
           placeholder="Search..."
-          placeholderTextColor="white"
+          placeholderTextColor="#d2beeb"
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
           onSubmitEditing={handleSearch}
@@ -36,16 +36,16 @@ export default SearchInput;
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: 'rgba(0, 0, 0, 1)',
+    backgroundColor: '#32075e',
     paddingTop: 20,
   },
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'black',
+    backgroundColor: '#221136',
     borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 5,
+    borderColor: '#4d3c5e',
+    borderRadius: 15,
     padding: 7,
     marginHorizontal: 5,
   },
@@ -55,5 +55,6 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    color: 'white',
   },
 });

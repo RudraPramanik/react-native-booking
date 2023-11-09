@@ -1,9 +1,72 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  FlatList,
+  SafeAreaView,
+} from 'react-native';
 import React from 'react';
 
-const DocList: React.FC = () => {
+interface dataType {
+  id: string;
+  name: string;
+  description: string;
+  rating: number;
+}
+const data: dataType = [
+  {
+    id: '1',
+    name: 'John Doe',
+    description: 'Software Engineer',
+    rating: 4.9,
+  },
+  {
+    id: '2',
+    name: 'John Doe',
+    description: 'Software Engineer',
+    rating: 4.9,
+  },
+  {
+    id: '3',
+    name: 'John Doe',
+    description: 'Software Engineer',
+    rating: 4.9,
+  },
+  {
+    id: '4',
+    name: 'John Doe',
+    description: 'Software Engineer',
+    rating: 4.9,
+  },
+  {
+    id: '5',
+    name: 'John Doe',
+    description: 'Software Engineer',
+    rating: 4.9,
+  },
+  // Add more data objects as needed
+];
+
+const DocList: React.FC = ({ data: dataType }) => {
   return (
-    <View style={styles.flatlistBody}>
+    <SafeAreaView style={styles.flatContainer}>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <CardItem item={item} />}
+        contentContainerStyle={styles.flatlistBody}
+        windowSize={3} // Set the window size to 3 to display three cards at a time
+        initialNumToRender={3} // Render 3 items initially
+        showsVerticalScrollIndicator={false}
+      />
+    </SafeAreaView>
+  );
+};
+
+const CardItem: React.FC<{ item: (typeof data)[0] }> = ({ item }) => {
+  return (
+    <View style={styles.card}>
       <View style={styles.cardContainer}>
         <View style={styles.leftSection}>
           <Image
@@ -11,47 +74,14 @@ const DocList: React.FC = () => {
             style={styles.image}
           />
           <View>
-            <Text style={styles.name}>John Doe</Text>
-            <Text style={styles.description}>Software Engineer</Text>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.description}>{item.description}</Text>
           </View>
         </View>
         <View style={styles.rightSection}>
-          <Text style={styles.verticalText}>4.9</Text>
+          <Text style={styles.verticalText}>{item.rating}</Text>
         </View>
       </View>
-      {/*  */}
-      <View style={styles.cardContainer}>
-        <View style={styles.leftSection}>
-          <Image
-            source={require('../../assets/icon.png')}
-            style={styles.image}
-          />
-          <View>
-            <Text style={styles.name}>John Doe</Text>
-            <Text style={styles.description}>Software Engineer</Text>
-          </View>
-        </View>
-        <View style={styles.rightSection}>
-          <Text style={styles.verticalText}>4.9</Text>
-        </View>
-      </View>
-      {/*  */}
-      <View style={styles.cardContainer}>
-        <View style={styles.leftSection}>
-          <Image
-            source={require('../../assets/icon.png')}
-            style={styles.image}
-          />
-          <View>
-            <Text style={styles.name}>John Doe</Text>
-            <Text style={styles.description}>Software Engineer</Text>
-          </View>
-        </View>
-        <View style={styles.rightSection}>
-          <Text style={styles.verticalText}>4.9</Text>
-        </View>
-      </View>
-      {/*  */}
     </View>
   );
 };
@@ -59,6 +89,11 @@ const DocList: React.FC = () => {
 export default DocList;
 
 const styles = StyleSheet.create({
+  flatContainer: {
+    height: 370, // Specify the height you want
+    marginHorizontal: 14,
+    zIndex: -1,
+  },
   flatlistBody: {
     marginHorizontal: 14,
     marginTop: 15,
@@ -66,10 +101,12 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     flexDirection: 'row',
-    borderWidth: 4,
-    borderColor: '#221136',
+    borderWidth: 2,
+    borderColor: '#4d3c5e',
+    // borderColor: '#221136',
     borderRadius: 18,
-    marginBottom: 10,
+    marginTop: 8,
+    marginBottom: 14,
     backgroundColor: '#221136',
   },
   leftSection: {
@@ -98,6 +135,11 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     color: '#d2beeb',
   },
+  card: {
+    borderColor: '#4d3c5e',
+    margin: 2,
+    border: 8,
+  },
   description: {
     fontSize: 14,
     color: '#d2beeb',
@@ -108,71 +150,4 @@ const styles = StyleSheet.create({
     color: '#d2beeb',
     alignItems: 'center',
   },
-  //   cardBody: {
-  //     marginTop: 15,
-  //     marginHorizontal: 10,
-  //   },
-  //   cardContainer: {
-  //     flexDirection: 'row',
-  //     alignItems: 'center',
-  //     borderColor: '#221136',
-  //     borderWidth: 4,
-  //     borderRadius: 17,
-  //     zIndex: -1,
-  //   },
-  //   cardMain: {
-  //     flexDirection: 'row',
-  //     backgroundColor: '#221136',
-  //     marginHorizontal: 0,
-  //     paddingVertical: 15,
-  //     paddingLeft: 10,
-  //   },
-  //   rightSide: {
-  //     backgroundColor: '#32075e',
-  //     paddingRight: 5,
-  //   },
-  //   roundedImage: {
-  //     width: 100,
-  //     height: 100,
-  //     borderRadius: 50,
-  //     marginRight: 10,
-  //   },
-  //   textContainer: {
-  //     flex: 1,
-  //     marginLeft: 16,
-  //     color: '#d2beeb',
-  //   },
-  //   name: {
-  //     fontSize: 18,
-  //     fontWeight: 'bold',
-  //     color: '#d2beeb',
-  //   },
-  //   description: {
-  //     fontSize: 14,
-  //     color: '#d2beeb',
-  //   },
-  //   divider: {
-  //     width: 1,
-  //     height: '100%',
-  //     backgroundColor: 'gray',
-  //     marginLeft: 10,
-  //   },
-  //   image: {
-  //     height: 70,
-  //     width: 70,
-  //     borderRadius: 100,
-  //     marginRight: 10,
-  //   },
 });
-
-{
-  /* <View style={styles.cardContainer}>
-<Image source={require('../../assets/icon.png')} style={styles.image} />
-
-<View style={styles.textContainer}>
-  <Text style={styles.name}>John Doe</Text>
-  <Text style={styles.description}>Software Engineer</Text>
-</View>
-<View style={styles.divider} />
-</View> */
-}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
 
 interface CardData {
   id: string;
@@ -28,10 +29,12 @@ const HorizontalCardList: React.FC = () => {
           renderItem={({ item }) => (
             <View style={styles.card}>
               <View style={styles.cardTop}>
-                <Text>{item.title}</Text>
+                <Text style={styles.svg}>
+                  <Entypo name="rainbow" size={24} color="white" />{' '}
+                </Text>
               </View>
               <View style={styles.cardBottom}>
-                <Text>{item.title}</Text>
+                <Text style={styles.text}>{item.title}</Text>
               </View>
             </View>
           )}
@@ -75,6 +78,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#32075e',
     borderBottomEndRadius: 10,
     borderBottomStartRadius: 10,
+  },
+  svg: {
+    alignContent: 'center',
+    flex: 1,
+    justifyContent: 'center',
   },
 });
 

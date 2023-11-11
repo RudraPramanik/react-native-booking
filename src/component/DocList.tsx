@@ -5,8 +5,10 @@ import {
   Image,
   FlatList,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 interface dataType {
   id: string;
@@ -14,7 +16,7 @@ interface dataType {
   description: string;
   rating: number;
 }
-const data: dataType = [
+const data: dataType[] = [
   {
     id: '1',
     name: 'John Doe',
@@ -50,7 +52,7 @@ const data: dataType = [
 
 const DocList: React.FC = ({ data: dataType }) => {
   return (
-    <SafeAreaView style={styles.flatContainer}>
+    <View style={styles.flatContainer}>
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
@@ -60,29 +62,37 @@ const DocList: React.FC = ({ data: dataType }) => {
         initialNumToRender={3} // Render 3 items initially
         showsVerticalScrollIndicator={false}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
 const CardItem: React.FC<{ item: (typeof data)[0] }> = ({ item }) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    // Navigate to the DetailScreen with the item details
+    navigation.navigate('Detail', item);
+  };
   return (
-    <View style={styles.card}>
-      <View style={styles.cardContainer}>
-        <View style={styles.leftSection}>
-          <Image
-            source={require('../../assets/icon.png')}
-            style={styles.image}
-          />
-          <View>
-            <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.description}>{item.description}</Text>
+    <TouchableOpacity onPress={handlePress}>
+      <View style={styles.card}>
+        <View style={styles.cardContainer}>
+          <View style={styles.leftSection}>
+            <Image
+              source={require('../../assets/icon.png')}
+              style={styles.image}
+            />
+            <View>
+              <Text style={styles.name}>{item.name}</Text>
+              <Text style={styles.description}>{item.description}</Text>
+            </View>
+          </View>
+          <View style={styles.rightSection}>
+            <Text style={styles.verticalText}>{item.rating}</Text>
           </View>
         </View>
-        <View style={styles.rightSection}>
-          <Text style={styles.verticalText}>{item.rating}</Text>
-        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -18,11 +18,15 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="home"
-          component={AppScreen}
+          name="details"
+          component={DetailScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="booking" component={DetailScreen} />
+        {/* <Stack.Screen
+          name="booking"
+          component={DetailScreen}
+          options={{ headerShown: false }}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -73,6 +73,7 @@ const CardItem: React.FC<{ item: (typeof data)[0] }> = ({ item }) => {
     // Navigate to the DetailScreen with the item details
     navigation.navigate('Detail', item);
   };
+  console.log(item);
   return (
     <TouchableOpacity onPress={handlePress}>
       <View style={styles.card}>

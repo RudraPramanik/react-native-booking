@@ -26,6 +26,7 @@ const DetailScreen: React.FC<{ route: any }> = () => {
             </View>
             <View style={styles.content1}>
               <Text style={styles.text}>Dr. Martin</Text>
+              <Text style={styles.designation}>dentist</Text>
               <Text style={styles.text}>Hello, this is on top</Text>
               <Text style={styles.text}>Hello, this is on top</Text>
               <Text style={styles.text}>Hello, this is on top</Text>
@@ -36,11 +37,19 @@ const DetailScreen: React.FC<{ route: any }> = () => {
       </View>
       {/* 2 */}
       <View style={styles.section2}>
+        {/* top 1/3 section */}
+        <View style={styles.topsection}>
+          <View></View>
+        </View>
+        {/* bottm 2/3 section */}
+        <View style={styles.btmSection}>
+          <View style={styles.sectionContent2top}></View>
+          <View style={styles.sectionContent2bottm}></View>
+        </View>
+
         {/* Content for the second section */}
       </View>
-      <View style={styles.section3}>
-        {/* Content for the second section */}
-      </View>
+      {/* Content for the second section */}
     </View>
   );
 };
@@ -69,6 +78,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginHorizontal: 16,
   },
+  designation: {
+    borderRadius: 5,
+    backgroundColor: '#221136',
+    borderWidth: 1,
+    borderColor: '#4d3c5e',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    color: 'white',
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginHorizontal: 50,
+  },
+  sectionContent2: {
+    marginHorizontal: 16,
+    backgroundColor: 'black',
+  },
   text: {
     color: 'white',
     fontSize: 20,
@@ -81,16 +106,39 @@ const styles = StyleSheet.create({
     marginLeft: 50,
   },
   section2: {
-    flex: 1, // Takes 1/3 of the available vertical space
-    backgroundColor: 'lightgreen', // Customize as needed
+    flex: 2, // Takes 1/3 of the available vertical space
   },
-  section3: {
-    flex: 1, // Takes 1/3 of the available vertical space
-    backgroundColor: 'lightcoral', // Customize as needed
+  topsection: {
+    flex: 1,
+    backgroundColor: '#221136',
+    marginHorizontal: 16,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#4d3c5e',
+    marginBottom: 2,
   },
-  section4: {
-    flex: 1, // Takes 1/3 of the available vertical space
-    backgroundColor: 'blue', // Customize as needed
+  btmSection: {
+    flex: 2,
+  },
+  sectionContent2top: {
+    flex: 2,
+    backgroundColor: '#221136',
+    marginHorizontal: 16,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#4d3c5e',
+    marginBottom: 2,
+    marginTop: 10,
+  },
+  sectionContent2bottm: {
+    flex: 1,
+    backgroundColor: '#120b14',
+    marginHorizontal: 16,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#4d3c5e',
+    marginBottom: 2,
+    marginTop: 10,
   },
 });
 export default DetailScreen;

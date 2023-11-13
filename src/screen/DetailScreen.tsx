@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 
@@ -17,16 +17,24 @@ const DetailScreen: React.FC<{ route: any }> = () => {
           source={require('../../assets/v_half.png')} // replace with your image path
           style={styles.backgroundImage}
         >
-          <View style={styles.container1}>
-            {/* Your component content goes here */}
-
-            <Text style={styles.text}>
-              Hello, this is on top of the background image!
-            </Text>
+          <View style={styles.section1Content}>
+            <View>
+              <Image
+                source={require('../../assets/doc.png')}
+                style={styles.Image}
+              />
+            </View>
+            <View style={styles.content1}>
+              <Text style={styles.text}>Dr. Martin</Text>
+              <Text style={styles.text}>Hello, this is on top</Text>
+              <Text style={styles.text}>Hello, this is on top</Text>
+              <Text style={styles.text}>Hello, this is on top</Text>
+            </View>
           </View>
         </ImageBackground>
         {/* Content for the first section */}
       </View>
+      {/* 2 */}
       <View style={styles.section2}>
         {/* Content for the second section */}
       </View>
@@ -45,20 +53,32 @@ const styles = StyleSheet.create({
   },
   section1: {
     flex: 1, // Takes 1/3 of the available vertical space
+    flexDirection: 'row',
   },
   backgroundImage: {
     flex: 1,
     resizeMode: 'cover', // or 'stretch' or 'contain' 'cover'
     height: 300,
   },
-  container1: {
+  content1: {},
+  section1Content: {
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingHorizontal: 10,
+    marginHorizontal: 16,
   },
   text: {
     color: 'white',
     fontSize: 20,
+  },
+  Image: {
+    marginTop: 50,
+    height: 280,
+    width: 130,
+    marginBottom: -140,
+    marginLeft: 50,
   },
   section2: {
     flex: 1, // Takes 1/3 of the available vertical space

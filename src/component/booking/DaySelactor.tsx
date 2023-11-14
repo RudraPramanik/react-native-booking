@@ -68,7 +68,7 @@ const DaySelactor: React.FC = () => {
     const day = date.getDate();
     const month = date.getMonth() + 1; // Months are zero-based
     const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+    return `${day}`;
   };
 
   const getDayName = (date: Date) => {
@@ -109,10 +109,12 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 8,
     margin: 5,
-    backgroundColor: '#3498db',
   },
   selectedDayButton: {
-    backgroundColor: '#2ecc71', // Change the color for the selected day
+    backgroundColor: 'black', // Change the color for the selected day
+    borderColor: '#4d3c5e',
+    borderWidth: 2,
+    borderColor: '#4d3c5e',
   },
   dayText: {
     color: 'white',

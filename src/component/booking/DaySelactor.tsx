@@ -53,14 +53,13 @@ const DaySelactor: React.FC = () => {
       ]}
       onPress={() => handleDayPress(index)}
     >
-      <Text
-        style={[
-          styles.dayText,
-          selectedDay === index && styles.selectedDayText,
-        ]}
-      >
-        {`${item.day}\n${item.date}`}
-      </Text>
+      <View style={[selectedDay === index && styles.selectedDayText]}>
+        <Text style={styles.dayText}>
+          {`${item.day}`}
+          {/* {`${item.day}\n${item.date}`} */}
+        </Text>
+        <Text style={styles.dayText}>{item.date}</Text>
+      </View>
     </TouchableOpacity>
   );
 
@@ -109,16 +108,17 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 8,
     margin: 5,
+    marginTop: 14,
   },
   selectedDayButton: {
     backgroundColor: 'black', // Change the color for the selected day
-    borderColor: '#4d3c5e',
     borderWidth: 2,
     borderColor: '#4d3c5e',
   },
   dayText: {
     color: 'white',
     fontSize: 16,
+    marginVertical: 4,
   },
   selectedDayText: {
     fontWeight: 'bold', // Change the style for the selected day

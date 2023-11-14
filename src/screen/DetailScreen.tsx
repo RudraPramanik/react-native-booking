@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
+import DaySelactor from '../component/booking/DaySelactor';
 
 const DetailScreen: React.FC<{ route: any }> = () => {
   // const { name, description, rating } = route.params;
@@ -39,7 +40,9 @@ const DetailScreen: React.FC<{ route: any }> = () => {
       <View style={styles.section2}>
         {/* top 1/3 section */}
         <View style={styles.topsection}>
-          <View></View>
+          <View>
+            <DaySelactor />
+          </View>
         </View>
         {/* bottm 2/3 section */}
         <View style={styles.btmSection}>

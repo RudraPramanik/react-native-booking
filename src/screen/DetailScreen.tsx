@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import DaySelactor from '../component/booking/DaySelactor';
+import TimeSelector from '../component/booking/TimeSelector';
 
 const DetailScreen: React.FC<{ route: any }> = () => {
   // const { name, description, rating } = route.params;
@@ -46,7 +47,9 @@ const DetailScreen: React.FC<{ route: any }> = () => {
         </View>
         {/* bottm 2/3 section */}
         <View style={styles.btmSection}>
-          <View style={styles.sectionContent2top}></View>
+          <View style={styles.sectionContent2top}>
+            <TimeSelector />
+          </View>
           <View style={styles.sectionContent2bottm}></View>
         </View>
 
@@ -66,6 +69,7 @@ const styles = StyleSheet.create({
   section1: {
     flex: 1, // Takes 1/3 of the available vertical space
     flexDirection: 'row',
+    marginTop: -50,
   },
   backgroundImage: {
     flex: 1,
@@ -112,7 +116,7 @@ const styles = StyleSheet.create({
     flex: 2, // Takes 1/3 of the available vertical space
   },
   topsection: {
-    flex: 1,
+    flex: 0.8,
     backgroundColor: '#221136',
     marginHorizontal: 16,
     borderRadius: 20,
@@ -121,10 +125,10 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   btmSection: {
-    flex: 2,
+    flex: 2.2,
   },
   sectionContent2top: {
-    flex: 2,
+    flex: 3.5,
     backgroundColor: '#221136',
     marginHorizontal: 16,
     borderRadius: 20,
@@ -134,7 +138,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   sectionContent2bottm: {
-    flex: 1,
+    flex: 0.5,
     backgroundColor: '#120b14',
     marginHorizontal: 16,
     borderRadius: 20,

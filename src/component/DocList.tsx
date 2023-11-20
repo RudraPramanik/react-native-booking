@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-interface dataType {
+interface DataType {
   id: string;
   name: string;
   username: string;
@@ -18,41 +18,8 @@ interface dataType {
 
   // rating: number;
 }
-const data: dataType[] = [
-  {
-    id: '1',
-    name: 'John Doe',
-    description: 'Software Engineer',
-    rating: 4.9,
-  },
-  {
-    id: '2',
-    name: 'John Doe',
-    description: 'Software Engineer',
-    rating: 4.9,
-  },
-  {
-    id: '3',
-    name: 'John Doe',
-    description: 'Software Engineer',
-    rating: 4.9,
-  },
-  {
-    id: '4',
-    name: 'John Doe',
-    description: 'Software Engineer',
-    rating: 4.9,
-  },
-  {
-    id: '5',
-    name: 'John Doe',
-    description: 'Software Engineer',
-    rating: 4.9,
-  },
-  // Add more data objects as needed
-];
 
-const DocList: React.FC = ({ data: dataType }) => {
+const DocList: React.FC<{ data: DataType[] }> = ({ data }) => {
   const [data, setData] = useState<DataType[]>([]);
   const navigation = useNavigation();
   useEffect(() => {
@@ -62,8 +29,8 @@ const DocList: React.FC = ({ data: dataType }) => {
         const response = await fetch(
           'https://jsonplaceholder.typicode.com/users'
         );
-        const jsonData = await response.json();
-        setData(jsonData);
+        const data = await response.json();
+        setData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -77,7 +44,7 @@ const DocList: React.FC = ({ data: dataType }) => {
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <CardItem item={item} />}
+        renderItem={({ item }) => <CardItem item={data} />}
         contentContainerStyle={styles.flatlistBody}
         windowSize={3} // Set the window size to 3 to display three cards at a time
         initialNumToRender={3} // Render 3 items initially
@@ -106,11 +73,11 @@ const CardItem: React.FC<{ item: (typeof data)[0] }> = ({ item }) => {
             />
             <View>
               <Text style={styles.name}>{item.name}</Text>
-              <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.description}>{item.email}</Text>
             </View>
           </View>
           <View style={styles.rightSection}>
-            <Text style={styles.verticalText}>{item.rating}</Text>
+            <Text style={styles.verticalText}>4.4</Text>
           </View>
         </View>
       </View>

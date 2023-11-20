@@ -7,14 +7,16 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 interface dataType {
   id: string;
   name: string;
-  description: string;
-  rating: number;
+  username: string;
+  email: string;
+
+  // rating: number;
 }
 const data: dataType[] = [
   {
@@ -51,6 +53,25 @@ const data: dataType[] = [
 ];
 
 const DocList: React.FC = ({ data: dataType }) => {
+  const [data, setData] = useState<DataType[]>([]);
+  const navigation = useNavigation();
+  useEffect(() => {
+    // Fetch data from your API endpoint
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://jsonplaceholder.typicode.com/users'
+        );
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []); // The empty dependency array ensures that this effect runs only once, similar to componentDidMount
+
   return (
     <View style={styles.flatContainer}>
       <FlatList

@@ -3689,6 +3689,39 @@
     "@expo/config" "~8.1.0"
     "uuid" "^3.3.2"
 
+"expo-dev-client@~2.4.12":
+  "integrity" "sha512-3+xg0yb/0g6+JQaWq5+xn2uHoOXP4oSX33aWkaZPSNJLoyzfRaHNDF5MLcrMBbEHCw5T5qZRU291K+uQeMMC0g=="
+  "resolved" "https://registry.npmjs.org/expo-dev-client/-/expo-dev-client-2.4.12.tgz"
+  "version" "2.4.12"
+  dependencies:
+    "expo-dev-launcher" "2.4.14"
+    "expo-dev-menu" "3.2.2"
+    "expo-dev-menu-interface" "1.3.0"
+    "expo-manifests" "~0.7.0"
+    "expo-updates-interface" "~0.10.0"
+
+"expo-dev-launcher@2.4.14":
+  "integrity" "sha512-SlUf+fEX9sKzDzY1Ui8j5775eLKpO0xPVoI89G7CRsrpUv6ZRvRF836cMFesxkU5d+3bXHpKzDQiEPDSI1G/WQ=="
+  "resolved" "https://registry.npmjs.org/expo-dev-launcher/-/expo-dev-launcher-2.4.14.tgz"
+  "version" "2.4.14"
+  dependencies:
+    "expo-dev-menu" "3.2.2"
+    "resolve-from" "^5.0.0"
+    "semver" "^7.5.3"
+
+"expo-dev-menu-interface@1.3.0":
+  "integrity" "sha512-WtRP7trQ2lizJJTTFXUSGGn1deIeHaYej0sUynvu/uC69VrSP4EeSnYOxbmEO29kuT/MsQBMGu0P/AkMQOqCOg=="
+  "resolved" "https://registry.npmjs.org/expo-dev-menu-interface/-/expo-dev-menu-interface-1.3.0.tgz"
+  "version" "1.3.0"
+
+"expo-dev-menu@3.2.2":
+  "integrity" "sha512-q0IDlCGkZMsDIFV+Mgnz0Q3u/bcnrF8IFMglJ0onF09e5csLk5Ts7hKoQyervOJeThyI402r9OQsFNaru2tgtg=="
+  "resolved" "https://registry.npmjs.org/expo-dev-menu/-/expo-dev-menu-3.2.2.tgz"
+  "version" "3.2.2"
+  dependencies:
+    "expo-dev-menu-interface" "1.3.0"
+    "semver" "^7.5.3"
+
 "expo-file-system@~15.4.0", "expo-file-system@~15.4.4":
   "integrity" "sha512-F0xS88D85F7qVQ61r0qBnzh6VW/s6iIl+VaQEEi2nAIOQHw1JIEj4yCXPLTtbyn5VmArbe2dSL3KYz1V+BLkKA=="
   "resolved" "https://registry.npmjs.org/expo-file-system/-/expo-file-system-15.4.4.tgz"
@@ -3703,6 +3736,11 @@
   dependencies:
     "fontfaceobserver" "^2.1.0"
 
+"expo-json-utils@~0.7.0":
+  "integrity" "sha512-L0lyH8diXQtV0q5BLbFlcoxTqPF5im79xDHPhybB0j36xYdm65hjwRJ4yMrPIN5lR18hj48FUZeONiDHRyEvIg=="
+  "resolved" "https://registry.npmjs.org/expo-json-utils/-/expo-json-utils-0.7.1.tgz"
+  "version" "0.7.1"
+
 "expo-keep-awake@~12.3.0":
   "integrity" "sha512-ujiJg1p9EdCOYS05jh5PtUrfiZnK0yyLy+UewzqrjUqIT8eAGMQbkfOn3C3fHE7AKd5AefSMzJnS3lYZcZYHDw=="
   "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-12.3.0.tgz"
@@ -3712,6 +3750,13 @@
   "integrity" "sha512-GOV2wODawr2biRCtF2Yb5+wLzvnwXS8dAblfQO7qjyh4f7TDTJn7X0TlVSDMNhIdbAcZBrdxvGFeE2iXdzQ6ow=="
   "resolved" "https://registry.npmjs.org/expo-linear-gradient/-/expo-linear-gradient-12.5.0.tgz"
   "version" "12.5.0"
+
+"expo-manifests@~0.7.0":
+  "integrity" "sha512-xlhL0XI2zw3foJ0q2Ra4ieBhU0V2yz+Rv6GpVEaaIHFlIC/Dbx+mKrX5dgenZEMERr/MG7sRJaRbAVB2PaAYhA=="
+  "resolved" "https://registry.npmjs.org/expo-manifests/-/expo-manifests-0.7.2.tgz"
+  "version" "0.7.2"
+  dependencies:
+    "expo-json-utils" "~0.7.0"
 
 "expo-modules-autolinking@>=0.8.1", "expo-modules-autolinking@1.5.1":
   "integrity" "sha512-yt5a1VCp2BF9CrsO689PCD5oXKP14MMhnOanQMvDn4BDpURYfzAlDVGC5fZrNQKtwn/eq3bcrxIwZ7D9QjVVRg=="
@@ -3737,6 +3782,11 @@
   "integrity" "sha512-e//Oi2WPdomMlMDD3skE4+1ZarKCJ/suvcB4Jo/nO427niKug5oppcPNYO+csR6y3ZglGuypS+3pp/hJ+Xp6fQ=="
   "resolved" "https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.6.0.tgz"
   "version" "1.6.0"
+
+"expo-updates-interface@~0.10.0":
+  "integrity" "sha512-I6JMR7EgjXwckrydDmrkBEX/iw750dcqpzQVsjznYWfi0HTEOxajLHB90fBFqQkUV5i5s4Fd3hYQ1Cn0oMzUbA=="
+  "resolved" "https://registry.npmjs.org/expo-updates-interface/-/expo-updates-interface-0.10.1.tgz"
+  "version" "0.10.1"
 
 "expo@*", "expo@>=47.0.0", "expo@~49.0.15":
   "integrity" "sha512-1TcpWUEpzCQ7FjtwO1j+l/UvNgrEDZWfQm4kOo9eVZVDNKavYo+KL4XXHeljSAOOGhI/plmpD3bvhfYoywOAFQ=="
